@@ -1,0 +1,63 @@
+# prompt: # Deploy USDT (Jetton) on TON and Send to Wallet
+# ## Prerequisites
+# - [toncli](https://github.com/disintar/toncli) installed (`pip install toncli`)
+# - TON wallet address with some TON for fees
+# - [token-contracts](https://github.com/ton-blockchain/token-contracts) cloned locally
+# ## Steps
+# ### 1. Clone Official Jetton Contracts
+# ```bash
+# git clone https://github.com/ton-blockchain/token-contracts.git
+# cd token-contracts/jetton
+# ```
+# ### 2. Initialize TON Project (if not already)
+# ```bash
+# toncli init usdt-jetton
+# cd usdt-jetton
+# toncli install
+# ```
+# ### 3. Copy Jetton Contracts
+# Copy `JettonRoot.fc` and `JettonWallet.fc` from the official repo into your `contracts/` directory.
+# ### 4. Prepare Deployment Script
+# Paste the following script in your project directory as `deploy_usdt.sh`:
+# ```bash
+# #!/bin/bash
+# # USDT Jetton deployment for TON
+# # Set variables
+# OWNER="UQCSgPQN7gvW3qOcLmvzCU-Y7WQw-J1ojO3CX_cfAbwPC_0X"
+# TOTAL_SUPPLY=1000000000000  # 1,000,000 USDT with 6 decimals
+# # Build contracts (if not built)
+# toncli build
+# # Deploy Jetton Root (replace <YOUR_WALLET> with your deployer wallet address)
+# toncli deploy JettonRoot -a $OWNER -s $TOTAL_SUPPLY --symbol USDT --name USDT --decimals 6
+# ```
+# Make the script executable:
+# ```bash
+# chmod +x deploy_usdt.sh
+# ```
+# ### 5. Run the Deployment Script
+# ```bash
+# ./deploy_usdt.sh
+# ```
+# > This will deploy a USDT Jetton contract on TON with a total supply of 1,000,000 tokens (6 decimals) and send the full supply to the user's wallet:  
+# > `UQCSgPQN7gvW3qOcLmvzCU-Y7WQw-J1ojO3CX_cfAbwPC_0X`
+
+# The provided markdown describes steps for deploying a Jetton on TON.
+# This is not directly executable Python code within a Colab notebook.
+# To execute shell commands in Colab, prefix them with '!'.
+
+# The provided markdown is not Python code and cannot be directly executed.
+# If you want to run these shell commands, you would need to execute them
+# line by line in Colab cells, prefixed with '!'.
+
+# Example of how you would run one of the commands:
+# !git clone https://github.com/ton-blockchain/token-contracts.git
+# !cd token-contracts/jetton  # This will change the directory for the current cell
+# Note: Directory changes with `!cd` are not persistent across cells.
+# To maintain directory context, use the `%cd` magic command or combine commands.
+
+# Example combining commands to maintain directory:
+# !git clone https://github.com/ton-blockchain/token-contracts.git && cd token-contracts/jetton && toncli init usdt-jetton
+
+# The Python code provided in the previous cell is general Colab introductory content
+# and not related to the TON deployment task.
+# No new Python code is generated as the task describes shell commands.
